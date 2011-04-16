@@ -11,9 +11,6 @@ global.jQuery = require("jquery").create(window);
 //Test framework
 var jasmine=require('jasmine-node');
 
-//Dependencies
-require(__dirname + "/jasmine-grammar.js");
-
 for(var key in jasmine) {
   global[key] = jasmine[key];
 }

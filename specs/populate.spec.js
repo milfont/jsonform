@@ -50,16 +50,9 @@ jQuery(template).appendTo("body");
 
 var lancamento;
 
-describe('Populate',function(){
+describe('jsonform',function(){
     
   beforeEach(function () {
-    
-    Object.defineProperty(Object.prototype, "toJSON()", {
-      enumerable: false, value: function() {
-        
-      }
-    });
-    
     lancamento = {
       empresa: {id: 2, name: "Teste"},
       partidas: [
@@ -71,42 +64,11 @@ describe('Populate',function(){
       date: "12/03/1999"
     };
   });
-
-  it('when exists nested objects', function () {
-    jQuery('#jsonform').jsonform(lancamento, function(json) {      
-      expect(jQuery("#partidas\\[0\\]\\.conta\\.codigo").val().toString()).toEqual("1.02.0002");
+  
+    it('when exists nested objects', function () {
+      jQuery('#jsonform').jsonform(lancamento, function(json) {      
+        expect(jQuery("#partidas\\[0\\]\\.conta\\.codigo").val().toString()).toEqual("1.02.0002");
+      });
     });
-  });
 
 });
-
-
-
-
-console.log("jasmine.grammar", jasmine.grammar);
-
-/*
-https://github.com/rudylattae/jasmine-species/raw/master/src/jasmine-species/jasmine-grammar.js
-*/
-feature('Car engine startup', function() {
-    summary(
-        'In order to drive my car around',
-        'As a vehicle owner',
-        'I want to press a button to start my car'
-    );
-    
-    scenario('The is stopped with the engine off', function() {
-        var car;
-        
-        given('My car is parked and not running', function() {
-            car = "teste";
-        });
-        when('I press the start button', function() {
-            
-        });
-        then('The car should start up', function() {
-
-        });
-    });
-});
-
