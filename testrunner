@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+#instrument files
+#https://github.com/visionmedia/node-jscoverage
+#node-jscoverage lib lib-cov
+#TODO
+
+#execute tests
+node runspecs.js
