@@ -1,0 +1,6 @@
+Install nodejs and npm https://github.com/joyent/node/wiki/Installation
+git clone git://github.com/milfont/jsonform.git
+cd jsonform
+npm install 
+sudo chmod 777 testrunner
+./testrunner
