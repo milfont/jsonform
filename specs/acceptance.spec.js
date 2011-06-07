@@ -45,24 +45,36 @@ then  = function(desc, func){
 /*
 https://github.com/rudylattae/jasmine-species/raw/master/src/jasmine-species/jasmine-grammar.js
 */
-feature('Car engine startup', function() {
+feature('Using jQuery plugin to populate form', function() {
   summary(
-      'In order to populate my form',
+      'In order to submit my form',
       'As a user',
-      'I want to press a button to populate'
+      'I want populate a form with json'
   );
-    
   scenario('The is stopped with the engine off', function() {
-      var car;
-      
-      given('My car is parked and not running', function() {
-        car = "teste";
+      var object;
+      given('json object', function() {
+        object = {
+            nested: {id: 2, name: "Teste"},
+            array_nested: [
+              {nested: {id: 3, name: "Teste"} }
+            ],
+            description: "Teste",
+            value: "125,67",
+            date: "12/03/1999"
+          };
+        });
+      and('form html', function() {
+        var template =  "<form action='#' id='jsonform'> \
+        ...\
+        </form>";
+        jQuery(template).appendTo("body");
       });
       when('I press the start button', function() {
-        car = "teste";
+        jQuery('#jsonform').jsonform(object);
       });
       then('The car should start up', function() {
-        expect(car).toEqual("teste");
+        expect(jQuery(query).val().toString()).toEqual("Teste");
       });
   });
 });
