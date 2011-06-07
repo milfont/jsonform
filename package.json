@@ -1,0 +1,12 @@
+{ "name" : "jsonform"
+   , "version" : "0.1.0"
+   , "description" : "Create standard JSON From/To Forms with jQuery"
+   , "main" : "runspecs.js"
+   , "dependencies" :
+    {
+        "jsdom"        : "0.2.0",
+        "jquery"       : "1.5.1",
+        "jasmine-node" : "1.0.6"
+    }
+   , "engines" : { "node" : ">=0.5.0-pre" }
+}
