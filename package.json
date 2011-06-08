@@ -6,7 +6,7 @@
     {
         "jsdom"        : "0.2.0",
         "jquery"       : "1.5.1",
-        "jasmine-node" : "1.0.6"
+        "jasmine-node" : "https://github.com/milfont/jasmine-node/tarball/master"
     }
    , "engines" : { "node" : ">=0.5.0-pre" }
 }
