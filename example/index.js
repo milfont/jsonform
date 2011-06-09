@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var lancamento = {
+  lancamento = {
     empresa: {id: 2, name: "Teste"},
     partidas: [
       {conta: {codigo:"1.02.0002", nome: "Compras"}, natureza: "1"}, 
@@ -10,11 +10,20 @@ $(document).ready(function(){
   };
   
   $('#jsonform').bind('submit', function() {
-    
+
+  	
     $(this).jsonform(lancamento, function(json) {
-    	console.log("callback", json);
+    	if(console) console.log("callback", json);
     });
   	
+    return false;
+  });
+  
+  jQuery("form[name='jsonform']").bind('submit', function() {
+
+    
+    $(this).populate(lancamento, true);
+    
     return false;
   });
 

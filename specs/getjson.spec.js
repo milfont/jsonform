@@ -1,6 +1,6 @@
 var lancamento;
 
-describe('Populate with jsonform when have id property', function() {
+describe('Get JSON with jsonform when have id property', function() {
 
     beforeEach( function () {
         jQuery("body").html("");
@@ -17,20 +17,21 @@ describe('Populate with jsonform when have id property', function() {
         };
     });
 
-    it('should populate nested objects using "populate method"', function () {
-        jQuery('#jsonform').populate(lancamento);
-        expect(jQuery("#partidas\\[0\\]\\.conta\\.codigo").val().toString()).toEqual("1.02.0002");
+    it('should have nested object using "getJSON method"', function () {
+        var codigo = jQuery('#jsonform').populate(lancamento)
+                                        .getJSON().partidas[0].conta.codigo;
+        expect(codigo).toEqual("1.02.0002");
     });
     
-    it('should populate nested objects using "jsonform method"', function () {
-        jQuery('#jsonform').jsonform(lancamento, function(){
-            expect(jQuery("#partidas\\[0\\]\\.conta\\.codigo").val().toString()).toEqual("1.02.0002");
+    it('should have nested object using "jsonform method"', function () {
+        jQuery('#jsonform').jsonform(lancamento, function(json){
+            expect(json.partidas[0].conta.codigo).toEqual("1.02.0002");
         });
     });
 
 });
 
-describe('Populate with jsonform when have name property', function() {
+describe('Get JSON with jsonform when have name property', function() {
 
     beforeEach( function () {
         jQuery("body").html("");
@@ -49,9 +50,9 @@ describe('Populate with jsonform when have name property', function() {
 
     it('should populate nested objects', function () {
         var byName = true;
-        jQuery("form[name='jsonform']").populate(lancamento, byName);
-        var value = jQuery("[name='partidas\\[0\\]\\.conta\\.codigo']").val().toString();
-        expect(value).toEqual("1.02.0001");
+        var codigo = jQuery("form[name='jsonform']").populate(lancamento, byName)
+                                        .getJSON(byName).partidas[0].conta.codigo;
+        expect(codigo).toEqual("1.02.0001");
     });
 
 });

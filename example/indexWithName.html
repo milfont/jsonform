@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>index</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="Studio 3 http://aptana.com/" />
+  <meta name="author" content="Christiano Milfont" />
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+  <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  
+  <link rel="stylesheet" href="style.css" type="text/css">
+  
+</head>
+
+<body id="content">
+
+    <div id="top">
+      <h1>JSONForm</h1>
+    </div>
+
+    <div class="quadro">
+      <h1>index</h1>
+    </div>
+
+    <div class="quadro">
+
+<form action='#' name='jsonform'> 
+      <p>
+        <label for='empresa.id'>Empresa:</label> 
+        <select name='empresa.id'> 
+          <option value='1'>Milfont Consulting</option> 
+          <option value='2'>TriadWorks</option> 
+          <option value='3'>Caelum</option> 
+        </select> 
+      </p> 
+      <p> 
+        <label for='date'>Data:</label>  <input type='text' name='date' value='01/01/2011' /> 
+      </p> 
+      <p> 
+        <label for='partidas[0].conta.codigo'>Débito:</label> 
+          <select name='partidas[0].conta.codigo'> 
+            <option value='1.01.0001'>Caixa</option> 
+            <option value='1.02.0001'>Banco</option> 
+            <option value='1.02.0002'>Compras</option> 
+          </select> 
+          </input>  
+          <input type='text'   name='partidas[0].conta.nome' /> 
+          <input type='hidden' name='partidas[0].natureza' value='1' /> 
+          <input type='text'   name='partidas[0].nesteds[0].nested' /> 
+          <input type='text'   name='partidas[0].nesteds[1].nested' /> 
+      </p> 
+      <p> 
+        <label for='partidas[1].conta.codigo'>Crédito:</label> 
+          <select name='partidas[1].conta.codigo'> 
+            <option value='1.01.0001'>Caixa</option> 
+            <option value='1.02.0001'>Banco</option> 
+            <option value='1.02.0002'>Compras</option> 
+          </select> 
+          </input>  
+          <input type='text'   name='partidas[1].conta.nome' /> 
+          <input type='hidden' name='partidas[1].natureza' value='-1' /> 
+          <input type='text'   name='partidas[1].nesteds[0].nested' /> 
+          <input type='text'   name='partidas[1].nesteds[1].nested' /> 
+      </p> 
+      <p>
+        <label for='description'>Descrição:</label> <textarea name='description'></textarea>
+      </p> 
+      <p>
+        <label for='value'>Valor:</label> <input type='text' name='value' />
+      </p>
+      <p>
+        <input type='submit' name='submit'/>
+      </p>
+    </form>
+      
+    </div>
+  
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/jsonform.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
