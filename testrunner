@@ -5,5 +5,7 @@
 #node-jscoverage lib lib-cov
 #TODO
 
+./build
+
 #execute tests
 node runspecs.js

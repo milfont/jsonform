@@ -12,7 +12,8 @@ global.jQuery = require("jquery").create(window);
 var jasmine=require('jasmine-node');
 
 //What we're testing
-require(__dirname + "/lib/jsonform.js")
+//require(__dirname + "/lib/jsonform.js")
+require(__dirname + "/minified/jsonform.min.js")
 
 // files 
 var fs = require('fs');
