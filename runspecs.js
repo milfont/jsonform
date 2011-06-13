@@ -15,7 +15,7 @@ var jasmine=require('jasmine-node');
 //require(__dirname + "/lib/jsonform.js")
 require(__dirname + "/minified/jsonform.min.js")
 
-// files 
+// Templates 
 var fs = require('fs');
 var templatePath = __dirname + '/specs/template.html';
 var templateWithNamePath = __dirname + '/specs/template.with.name.html';
@@ -25,6 +25,7 @@ var templateWithName = fs.readFileSync(templateWithNamePath).toString();
 
 global["template"] = template;
 global["templateWithName"] = templateWithName;
+
 var isVerbose = true;
 var showColors = true;
 jasmine.executeSpecsInFolder(__dirname + '/specs', function(runner, log){    
