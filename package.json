@@ -1,5 +1,5 @@
 { "name" : "jsonform"
-   , "version" : "0.1.1"
+   , "version" : "1.0.0"
    , "description" : "Create standard JSON From/To Forms with jQuery"
    , "main" : "runspecs.js"
    , "dependencies" :

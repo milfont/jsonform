@@ -1,5 +1,6 @@
 var lancamento;
 
+
 describe('Populate with jsonform when have id property', function() {
 
     beforeEach( function () {
@@ -18,17 +19,13 @@ describe('Populate with jsonform when have id property', function() {
     });
 
     it('should populate nested objects using "populate method"', function () {
-        jQuery('#jsonform').populate(lancamento);
+        var byName = true;
+        jQuery('#jsonform').populate(lancamento, byName);
         expect(jQuery("#partidas\\[0\\]\\.conta\\.codigo").val().toString()).toEqual("1.02.0002");
-    });
-    
-    it('should populate nested objects using "jsonform method"', function () {
-        jQuery('#jsonform').jsonform(lancamento, function(){
-            expect(jQuery("#partidas\\[0\\]\\.conta\\.codigo").val().toString()).toEqual("1.02.0002");
-        });
     });
 
 });
+
 
 describe('Populate with jsonform when have name property', function() {
 
@@ -48,8 +45,7 @@ describe('Populate with jsonform when have name property', function() {
     });
 
     it('should populate nested objects', function () {
-        var byName = true;
-        jQuery("form[name='jsonform']").populate(lancamento, byName);
+        jQuery("form[name='jsonform']").populate(lancamento);
         var value = jQuery("[name='partidas\\[0\\]\\.conta\\.codigo']").val().toString();
         expect(value).toEqual("1.02.0001");
     });
