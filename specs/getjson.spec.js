@@ -53,6 +53,33 @@ describe("Get JSON with jsonform ", function(){
     
     });
 
+    describe('when need prefix in nested property', function() {
+    
+        beforeEach( function () {
+            jQuery("body").html("");
+            jQuery(global["templateWithName"]).appendTo("body");
+            lancamento = {
+                empresa: {id: 2, name: "Teste"},
+                partidas: [
+                    {conta: {codigo:"1.02.0001", nome: "Banco"}, natureza: "-1"},
+                    {conta: {codigo:"1.01.0001", nome: "Caixa"}, natureza: "1"}
+                ],
+                description: "Teste",
+                value: "47,32",
+                date: "12/03/1999"
+            };
+        });
+    
+        it('should have nested objects', function () {
+            var json = jQuery("form[name='jsonform']").populate(lancamento)
+                                            .getJSON({prefix:"attributes_"});
+            console.log(json);
+            expect(json.attributes_partidas).toBeTruthy();
+        });
+    
+    });
+
+
     describe('when have an input without name property', function() {
     
         beforeEach( function () {
