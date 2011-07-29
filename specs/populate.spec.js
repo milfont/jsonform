@@ -50,5 +50,12 @@ describe('Populate with jsonform when have name property', function() {
         expect(value).toEqual("1.02.0001");
     });
 
+    it('should populate zero values', function () {
+        lancamento.value = 0;
+        jQuery("form[name='jsonform']").populate(lancamento);
+        var value = jQuery("[name='value']").val().toString();
+        expect(value).toEqual("0");
+    });
+
 });
 

@@ -73,7 +73,6 @@ describe("Get JSON with jsonform ", function(){
         it('should have nested objects', function () {
             var json = jQuery("form[name='jsonform']").populate(lancamento)
                                             .getJSON({prefix:"attributes_"});
-            console.log(json);
             expect(json.attributes_partidas).toBeTruthy();
         });
     
