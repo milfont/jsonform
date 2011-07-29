@@ -70,12 +70,20 @@ describe("Get JSON with jsonform ", function(){
             };
         });
     
-        it('should have nested objects', function () {
+        it('should have nested objects with suffix', function () {
+            var json = jQuery("form[name='jsonform']").populate(lancamento)
+                                            .getJSON({suffix:"_attributes"});
+
+console.log(json);
+            expect(json.partidas_attributes).toBeTruthy();
+        });
+
+        it('should have nested objects with prefix', function () {
             var json = jQuery("form[name='jsonform']").populate(lancamento)
                                             .getJSON({prefix:"attributes_"});
             expect(json.attributes_partidas).toBeTruthy();
         });
-    
+
     });
 
 
