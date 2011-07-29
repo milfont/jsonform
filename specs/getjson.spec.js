@@ -24,6 +24,13 @@ describe("Get JSON with jsonform ", function(){
                                             .getJSON(byId).partidas[0].conta.codigo;
             expect(codigo).toEqual("1.02.0002");
         });
+
+        it('should have nested objects with suffix', function () {
+            var byId = true;
+            var json = jQuery("#jsonform").populate(lancamento, byId)
+                                            .getJSON({suffix:"_attributes", byId: byId});
+            expect(json.partidas_attributes).toBeTruthy();
+        });
         
     });
     
@@ -73,8 +80,6 @@ describe("Get JSON with jsonform ", function(){
         it('should have nested objects with suffix', function () {
             var json = jQuery("form[name='jsonform']").populate(lancamento)
                                             .getJSON({suffix:"_attributes"});
-
-console.log(json);
             expect(json.partidas_attributes).toBeTruthy();
         });
 
