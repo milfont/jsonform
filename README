@@ -1,4 +1,15 @@
-Example: with ID for legacy code
+## Example:
+```javascript
+$('#form_id').getJSON(true);
+```
+
+## Example:
+```javascript
+$("[name='formname']").getJSON();
+```
+
+## Example: with ID for legacy code
+```javascript
     var lancamento = {
         empresa: {id: 2, name: "Teste"},
         partidas: [
@@ -10,8 +21,10 @@ Example: with ID for legacy code
         date: "12/03/1999"
     };
     $('#form_id').populate(lancamento, true);
+```
 
-Example: with name [default]
+```javascript
+## Example: with name [default]
     var lancamento = {
         empresa: {id: 2, name: "Teste"},
         partidas: [
@@ -23,7 +36,8 @@ Example: with name [default]
         date: "12/03/1999"
     };
     $("[name='form_name'").populate(lancamento);
-    
+```
+
 Running Tests:
     Install nodejs and npm https://github.com/joyent/node/wiki/Installation
     git clone git://github.com/milfont/jsonform.git
