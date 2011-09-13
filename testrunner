@@ -5,7 +5,10 @@
 #node-jscoverage lib lib-cov
 #TODO
 
-./build
+dox --title JSONForm lib/jsonform.js > docs/index.html
+
+#https://github.com/dsimard/ready.js
+readyjs ready.conf.js
 
 #execute tests
 node runspecs.js
