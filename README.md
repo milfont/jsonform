@@ -8,7 +8,7 @@ $('#form_id').getJSON(true);
 $("[name='formname']").getJSON();
 ```
 
-## Example: with ID for legacy code
+## Example: by ID for legacy code
 ```javascript
 var lancamento = {
     empresa: {id: 2, name: "Teste"},
@@ -23,7 +23,7 @@ var lancamento = {
 $('#form_id').populate(lancamento, true);
 ```
 
-## Example: with name [default]
+## Example: by name [default]
 ```javascript
 var lancamento = {
     empresa: {id: 2, name: "Teste"},
