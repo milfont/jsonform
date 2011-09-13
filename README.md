@@ -1,9 +1,9 @@
-## Example:
+## Example: by ID
 ```javascript
 $('#form_id').getJSON(true);
 ```
 
-## Example:
+## Example: default
 ```javascript
 $("[name='formname']").getJSON();
 ```
