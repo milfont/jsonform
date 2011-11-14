@@ -2,6 +2,6 @@
     "src" : "./lib"
     , "dest" : "./minified"
     , "runGCompiler" : true
-    , runJslint : false
+    , runJslint : true
     , aggregateTo : "jsonform.min.js"
 }

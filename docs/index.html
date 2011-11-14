@@ -295,17 +295,18 @@ form with json using jQuery. Resolve nested objects.
             
             <span class="keyword">var</span> <span class="variable">verifyArray</span> = <span class="keyword">function</span>(<span class="variable">name</span>, <span class="variable">value</span>) {
                 <span class="keyword">var</span> <span class="variable">position</span>;
-                <span class="keyword">if</span>( <span class="variable">position</span> = <span class="variable">name</span>.<span class="variable">match</span>(<span class="regexp">/\[(\d+)\]/</span>)) {
+                <span class="keyword">if</span>( <span class="variable">name</span>.<span class="variable">match</span>(<span class="regexp">/\[(\d+)\]/</span>) ) {
+                    <span class="variable">position</span> = <span class="variable">name</span>.<span class="variable">match</span>(<span class="regexp">/\[(\d+)\]/</span>);
                     <span class="keyword">var</span> <span class="variable">arr</span> = [];
                     <span class="variable">arr</span>[ <span class="variable">position</span>[<span class="number integer">1</span>] ] = <span class="variable">value</span>;
                     <span class="keyword">return</span> <span class="variable">arr</span>;
                 } <span class="keyword">else</span> {
                     <span class="keyword">return</span> <span class="variable">value</span>;
                 }
-            }
+            };
 
-            <span class="keyword">return</span> (<span class="keyword">function</span> <span class="variable">generateJSON</span>(<span class="variable">json</span>, <span class="variable">hierarchy</span>, <span class="variable">value</span>) {
-                <span class="keyword">var</span> <span class="variable">hierarchy</span> = <span class="variable">hierarchy</span>.<span class="variable">split</span>(&<span class="variable">quot</span>;.&<span class="variable">quot</span>;);
+            <span class="keyword">return</span> (<span class="keyword">function</span> <span class="variable">generateJSON</span>(<span class="variable">json</span>, <span class="variable">hierarchyIn</span>, <span class="variable">value</span>) {
+                <span class="keyword">var</span> <span class="variable">hierarchy</span> = <span class="variable">hierarchyIn</span>.<span class="variable">split</span>(&<span class="variable">quot</span>;.&<span class="variable">quot</span>;);
                 <span class="keyword">var</span> <span class="variable">first</span> = <span class="variable">hierarchy</span>.<span class="variable">shift</span>();
                 <span class="keyword">return</span> <span class="keyword">function</span>(<span class="variable">json</span>, <span class="variable">name</span>){
                     <span class="variable">json</span>[ <span class="variable">prefix</span> + <span class="variable">name</span>.<span class="variable">replace</span>(<span class="regexp">/\[(\d+)\]/</span>, &<span class="variable">quot</span>;&<span class="variable">quot</span>;) + <span class="variable">suffix</span> ] = (<span class="variable">hierarchy</span>.<span class="variable">length</span> &<span class="variable">gt</span>; <span class="number integer">0</span> ) ? 
