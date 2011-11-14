@@ -137,7 +137,7 @@ http://jquery.org/license</li></ul>
 <ul><li><p><strong>version</strong>: <em>stable</em></p><pre><code> </code></pre></li></ul>
 </td>
 <td class="code">
-<pre><code><span class="variable">version</span>: <span class="string">'1.1.1'</span>,</code></pre>
+<pre><code><span class="variable">version</span>: <span class="string">'1.2.0'</span>,</code></pre>
 </td>
 </tr>
 <tr class="code">
@@ -184,7 +184,11 @@ standard JSON from Forms with jQuery. Resolve nested objects.</p></li><li><p><st
             }
             <span class="variable">self</span>.<span class="variable">find</span>(&<span class="variable">quot</span>;<span class="variable">input</span>,<span class="variable">textarea</span>,<span class="variable">select</span>&<span class="variable">quot</span>;).<span class="variable">each</span>( <span class="keyword">function</span>(<span class="variable">index</span>, <span class="variable">item</span>) {
                 <span class="keyword">var</span> <span class="variable">name</span> = (<span class="variable">byId</span>) ? $.<span class="variable">trim</span>(<span class="variable">item</span>.<span class="variable">id</span>) : $.<span class="variable">trim</span>(<span class="variable">item</span>.<span class="variable">name</span>);
+                <span class="keyword">var</span> <span class="variable">value</span> = <span class="variable">item</span>.<span class="variable">value</span>;
                 <span class="keyword">if</span>(<span class="variable">name</span> !== &<span class="variable">quot</span>;&<span class="variable">quot</span>;) {
+                    <span class="keyword">if</span>(<span class="variable">item</span>.<span class="variable">type</span> == &<span class="variable">quot</span>;<span class="variable">checkbox</span>&<span class="variable">quot</span>;) {
+                      <span class="variable">value</span> = (<span class="variable">item</span>.<span class="variable">checked</span>) ? <span class="variable">true</span> : <span class="variable">false</span>;
+                    }
                     <span class="variable">self</span>.<span class="variable">merge</span>(<span class="variable">json</span>, <span class="variable">self</span>.<span class="variable">buildJson</span>(<span class="variable">name</span>, <span class="variable">item</span>.<span class="variable">value</span>, <span class="variable">config</span>));
                 }
             });
@@ -332,21 +336,7 @@ form with json using jQuery. Resolve nested objects.
                 }
             }
             <span class="keyword">return</span> <span class="variable">merged</span>;
-        }),</code></pre>
-</td>
-</tr>
-<tr class="code">
-<td class="docs">
-<ul><li><strong>name</strong>: <em>clone</em></li></ul>
-
-<h2></h2>
-
-<ul><li><p><strong>param</strong>: <em>Object</em>  source</p></li><li><p><strong>returns</strong>: <em>Object</em>  Object Literal</p><pre><code> </code></pre></li></ul>
-</td>
-<td class="code">
-<pre><code><span class="variable">clone</span>: <span class="keyword">function</span>(<span class="variable">source</span>) {
-            <span class="keyword">return</span> <span class="this">this</span>.<span class="variable">merge</span>({}, <span class="variable">source</span>);
-        }
+        })
     });
 
 })(<span class="variable">jQuery</span>);</code></pre>
