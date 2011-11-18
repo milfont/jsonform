@@ -12,7 +12,7 @@ $(document).ready(function(){
   $('#jsonform').bind('submit', function() {
 
   	
-    $(this).jsonform(lancamento, function(json) {
+    $(this).populate(lancamento, function(json) {
     	if(console) console.log("callback", json);
     });
   	
