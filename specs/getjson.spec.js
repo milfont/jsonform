@@ -1,22 +1,25 @@
 describe("Get JSON with jsonform ", function(){
-    var lancamento;
+		var lancamento;    
+		
+		beforeEach( function () {
+        jQuery("body").html("");
+        lancamento = {
+            empresa: {id: 2, name: "Teste"},
+            partidas: [
+                {conta: {codigo:"1.02.0002", nome: "Compras"}, natureza: "1"},
+                {conta: {codigo:"1.01.0001", nome: "Banco"},   natureza: "-1"}
+            ],
+            description: "Teste",
+            value: "125,67",
+            date: "12/03/1999"
+        };
+    });
     
     describe('when have id property', function() {
     
         beforeEach( function () {
-            jQuery("body").html("");
             jQuery(global["template"]).appendTo("body");
-            lancamento = {
-                empresa: {id: 2, name: "Teste"},
-                partidas: [
-                    {conta: {codigo:"1.02.0002", nome: "Compras"}, natureza: "1"},
-                    {conta: {codigo:"1.02.0001", nome: "Banco"},   natureza: "-1"}
-                ],
-                description: "Teste",
-                value: "125,67",
-                date: "12/03/1999"
-            };
-        });
+       });
     
         it('should have nested object using "getJSON method"', function () {
             var byId = true;
@@ -38,24 +41,13 @@ describe("Get JSON with jsonform ", function(){
     describe('when have name property', function() {
     
         beforeEach( function () {
-            jQuery("body").html("");
             jQuery(global["templateWithName"]).appendTo("body");
-            lancamento = {
-                empresa: {id: 2, name: "Teste"},
-                partidas: [
-                    {conta: {codigo:"1.02.0001", nome: "Banco"}, natureza: "-1"},
-                    {conta: {codigo:"1.01.0001", nome: "Caixa"}, natureza: "1"}
-                ],
-                description: "Teste",
-                value: "47,32",
-                date: "12/03/1999"
-            };
         });
     
         it('should have nested objects', function () {
             var codigo = jQuery("form[name='jsonform']").populate(lancamento)
                                             .getJSON().partidas[0].conta.codigo;
-            expect(codigo).toEqual("1.02.0001");
+            expect(codigo).toEqual("1.02.0002");
         });
     
     });
@@ -63,18 +55,7 @@ describe("Get JSON with jsonform ", function(){
     describe('when need prefix in nested property', function() {
     
         beforeEach( function () {
-            jQuery("body").html("");
             jQuery(global["templateWithName"]).appendTo("body");
-            lancamento = {
-                empresa: {id: 2, name: "Teste"},
-                partidas: [
-                    {conta: {codigo:"1.02.0001", nome: "Banco"}, natureza: "-1"},
-                    {conta: {codigo:"1.01.0001", nome: "Caixa"}, natureza: "1"}
-                ],
-                description: "Teste",
-                value: "47,32",
-                date: "12/03/1999"
-            };
         });
     
         it('should have nested objects with suffix', function () {
@@ -95,19 +76,7 @@ describe("Get JSON with jsonform ", function(){
     describe('when have an input without name property', function() {
     
         beforeEach( function () {
-            jQuery("body").html("");
             jQuery(global["templateWithName"]).appendTo("body");
-            jQuery("textarea[name='description']").attr("name", "");
-            lancamento = {
-                empresa: {id: 2, name: "Teste"},
-                partidas: [
-                    {conta: {codigo:"1.02.0001", nome: "Banco"}, natureza: "-1"},
-                    {conta: {codigo:"1.01.0001", nome: "Caixa"}, natureza: "1"}
-                ],
-                description: "Teste",
-                value: "47,32",
-                date: "12/03/1999"
-            };
         });
     
         it('should not have property with empty name', function () {
