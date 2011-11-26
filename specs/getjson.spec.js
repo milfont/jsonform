@@ -3,7 +3,6 @@ describe("Get JSON with jsonform ", function(){
 		
 		beforeEach( function () {
         jQuery("body").html("");
-        jQuery(global["template"]).appendTo("body");
         lancamento = {
             empresa: {id: 2, name: "Teste"},
             partidas: [
