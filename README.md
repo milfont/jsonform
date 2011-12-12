@@ -1,11 +1,12 @@
 ## Example: by ID
 ```javascript
-$('#form_id').getJSON(true);
+var byID = true;
+var json = $('#form_id').getJSON( byID );
 ```
 
 ## Example: default
 ```javascript
-$("[name='formname']").getJSON();
+var json = $("#form_id").getJSON();
 ```
 
 ## Example: by ID for legacy code
@@ -20,7 +21,8 @@ var lancamento = {
     value: "125,67",
     date: "12/03/1999"
 };
-$('#form_id').populate(lancamento, true);
+var byID = true;
+$('#form_id').populate( lancamento, byID );
 ```
 
 ## Example: by name [default]
@@ -47,3 +49,9 @@ npm install
 sudo chmod 777 testrunner
 ./testrunner
 ```
+
+***
+### Contributors:
+
+ * [Josh Minnich] (https://github.com/joshmosh)
+ * [Alberto Leal] (https://github.com/albertoleal)
