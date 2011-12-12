@@ -55,3 +55,4 @@ sudo chmod 777 testrunner
 
  * [Josh Minnich] (https://github.com/joshmosh)
  * [Alberto Leal] (https://github.com/albertoleal)
+ * [Christiano Milfont] (https://github.com/cmilfont)
