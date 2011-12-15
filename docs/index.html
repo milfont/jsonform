@@ -137,7 +137,7 @@ http://jquery.org/license</li></ul>
 <ul><li><p><strong>version</strong>: <em>stable</em></p><pre><code> </code></pre></li></ul>
 </td>
 <td class="code">
-<pre><code><span class="variable">version</span>: <span class="string">'1.2.2'</span>,</code></pre>
+<pre><code><span class="variable">version</span>: <span class="string">'1.2.3'</span>,</code></pre>
 </td>
 </tr>
 <tr class="code">
@@ -185,7 +185,8 @@ standard JSON from Forms with jQuery. Resolve nested objects.</p></li><li><p><st
             <span class="variable">self</span>.<span class="variable">find</span>(&<span class="variable">quot</span>;<span class="variable">input</span>,<span class="variable">textarea</span>,<span class="variable">select</span>&<span class="variable">quot</span>;).<span class="variable">each</span>( <span class="keyword">function</span>(<span class="variable">index</span>, <span class="variable">item</span>) {
                 <span class="keyword">if</span>( !(<span class="variable">item</span>.<span class="variable">type</span> == &<span class="variable">quot</span>;<span class="variable">radio</span>&<span class="variable">quot</span>; &<span class="variable">amp</span>;&<span class="variable">amp</span>; !<span class="variable">item</span>.<span class="variable">checked</span>) ) {
                     <span class="keyword">var</span> <span class="variable">name</span> = (<span class="variable">byId</span>) ? $.<span class="variable">trim</span>(<span class="variable">item</span>.<span class="variable">id</span>) : $.<span class="variable">trim</span>(<span class="variable">item</span>.<span class="variable">name</span>);
-                    <span class="keyword">var</span> <span class="variable">value</span> = <span class="variable">item</span>.<span class="variable">value</span>;
+                    <span class="keyword">var</span> <span class="variable">value</span> = (<span class="variable">item</span>.<span class="variable">type</span> === &<span class="variable">quot</span>;<span class="variable">select</span>-<span class="variable">multiple</span>&<span class="variable">quot</span>;)? $(<span class="variable">item</span>).<span class="variable">val</span>() : 
+                                                                     <span class="variable">item</span>.<span class="variable">value</span>;
                     <span class="keyword">if</span>(<span class="variable">name</span> !== &<span class="variable">quot</span>;&<span class="variable">quot</span>;) {
                         <span class="keyword">if</span>(<span class="variable">item</span>.<span class="variable">type</span> == &<span class="variable">quot</span>;<span class="variable">checkbox</span>&<span class="variable">quot</span>;) {
                           <span class="variable">value</span> = (<span class="variable">item</span>.<span class="variable">checked</span>) ? <span class="variable">true</span> : <span class="variable">false</span>;
