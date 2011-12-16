@@ -1,11 +1,17 @@
-var lancamento;
+var lancamento, template, templateWithName;
 
+var fs = require('fs'),
+    templatePath         = __dirname + '/template.html',
+    templateWithNamePath = __dirname + '/template.with.name.html';
+    
+template         = fs.readFileSync(templatePath).toString();
+templateWithName = fs.readFileSync(templateWithNamePath).toString();
 
 describe('Populate with jsonform when have id property', function() {
 
     beforeEach( function () {
         jQuery("body").html("");
-        jQuery(global["template"]).appendTo("body");
+        jQuery(template).appendTo("body");
         lancamento = {
             empresa: {id: 2, name: "Teste"},
             partidas: [
@@ -31,7 +37,7 @@ describe('Populate with jsonform when have name property', function() {
 
     beforeEach( function () {
         jQuery("body").html("");
-        jQuery(global["templateWithName"]).appendTo("body");
+        jQuery(templateWithName).appendTo("body");
         lancamento = {
             empresa: {id: 2, name: "Teste"},
             partidas: [

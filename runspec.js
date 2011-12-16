@@ -3,24 +3,13 @@ var fs = require('fs');
 var sys = require('sys');
 var path = require('path');
 
-global.window = require("jsdom")
-                .jsdom()
-                .createWindow();
+global.window = require("jsdom").jsdom().createWindow();
 global.jQuery = require("jquery").create(window);
 
 //Test framework
 var jasmine=require('jasmine-node');
 
-require(__dirname + "/lib/jsonform.js")
-
-var templatePath = __dirname + '/specs/template.html';
-var templateWithNamePath = __dirname + '/specs/template.with.name.html';
-
-var template = fs.readFileSync(templatePath).toString();
-var templateWithName = fs.readFileSync(templateWithNamePath).toString();
-
-global["template"] = template;
-global["templateWithName"] = templateWithName;
+require(__dirname + "/lib/jsonform.js");
 
 var isVerbose = true;
 var showColors = true;
