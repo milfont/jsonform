@@ -1,8 +1,8 @@
 var lancamento, template, templateWithName;
 
 var fs = require('fs'),
-    templatePath         = __dirname + '/template.html',
-    templateWithNamePath = __dirname + '/template.with.name.html';
+    templatePath         = __dirname + '/templates/template.html',
+    templateWithNamePath = __dirname + '/templates/template.with.name.html';
     
 template         = fs.readFileSync(templatePath).toString();
 templateWithName = fs.readFileSync(templateWithNamePath).toString();
