@@ -11,6 +11,10 @@ describe("Get JSON with jsonform when array has no index", function(){
     it('should have nested objects', function () {
         jQuery("[name='partidas[].conta.codigo']").val(["1.01.0001", "1.02.0002"]);
         var json = jQuery("form[name='jsonform']").getJSON();
+        
+        
+        console.log("json ", json);
+        
         var codigo = json.partidas[0].conta.codigo;                                
         expect(codigo).toEqual([ '1.01.0001', '1.02.0002' ]);
     });
