@@ -22,18 +22,9 @@ describe("Get JSON with jsonform when select is multiple", function(){
                 {conta:{codigo:['1.03.0001', '1.03.0002']} }
             ]
         };
-		debugger;
-        console.log("objeto: ", obj);
-		console.log("value element: ", jQuery("form[name='jsonform']").find("[name='partidas[0].conta.codigo']").val());
 		
         var json = jQuery("form[name='jsonform']").populate(obj).getJSON();
-		
-		console.log("value element: ", jQuery("form[name='jsonform']").find("[name='partidas[0].conta.codigo']").val());
-		
-		console.log("json :", json);
-		console.log("json conta:", json.partidas[0]);
-		
-        var codigo = json.partidas[0].conta.codigo;                                
+		var codigo = json.partidas[0].conta.codigo;                                
         
         expect(codigo).toEqual([ '1.01.0001', '1.02.0002' ]);
     });
