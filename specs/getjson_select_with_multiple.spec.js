@@ -24,9 +24,12 @@ describe("Get JSON with jsonform when select is multiple", function(){
         };
 		
         var json = jQuery("form[name='jsonform']").populate(obj).getJSON();
-		var codigo = json.partidas[0].conta.codigo;                                
+		
+		var codigo1 = json.partidas[0].conta.codigo;                                
+		var codigo2 = json.partidas[1].conta.codigo;                                
         
-        expect(codigo).toEqual([ '1.01.0001', '1.02.0002' ]);
+        expect(codigo1).toEqual([ '1.01.0001', '1.02.0002' ]);
+        expect(codigo2).toEqual([ '1.03.0001', '1.03.0002' ]);
     });
 
 });
