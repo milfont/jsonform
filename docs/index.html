@@ -251,17 +251,25 @@ form with json using jQuery. Resolve nested objects.
 </td>
 <td class="code">
 <pre><code><span class="variable">populate</span>: <span class="keyword">function</span>(<span class="variable">json</span>, <span class="variable">byId</span>) {
+
+            <span class="keyword">var</span> <span class="variable">eachElementIsNotObject</span> = <span class="keyword">function</span>(<span class="variable">value</span>) {
+                <span class="keyword">return</span> ( <span class="variable">value</span>.<span class="variable">every</span>(<span class="keyword">function</span>(<span class="variable">val</span>){
+                                        <span class="keyword">return</span> <span class="keyword">typeof</span> <span class="variable">val</span> != &<span class="variable">quot</span>;<span class="variable">object</span>&<span class="variable">quot</span>;; 
+                                    })
+                        );
+            };
+
             <span class="keyword">var</span> <span class="variable">self</span> = <span class="this">this</span>;
             (<span class="keyword">function</span> <span class="variable">roam</span>(<span class="variable">el</span>, <span class="variable">father</span>) {
                 <span class="keyword">for</span>(<span class="keyword">var</span> <span class="variable">property</span> <span class="keyword">in</span> <span class="variable">el</span>) {
                     <span class="keyword">if</span>(<span class="variable">el</span>[<span class="variable">property</span>] || <span class="variable">el</span>[<span class="variable">property</span>] === <span class="number integer">0</span>) {
                         <span class="keyword">var</span> <span class="variable">value</span> = <span class="variable">el</span>[<span class="variable">property</span>];
-                        <span class="keyword">if</span>( <span class="keyword">typeof</span> <span class="variable">value</span> == &<span class="variable">quot</span>;<span class="variable">object</span>&<span class="variable">quot</span>;) {
+                        <span class="keyword">if</span>( <span class="keyword">typeof</span> <span class="variable">value</span> == &<span class="variable">quot</span>;<span class="variable">object</span>&<span class="variable">quot</span>; &<span class="variable">amp</span>;&<span class="variable">amp</span>; !($.<span class="variable">isArray</span>(<span class="variable">value</span>) &<span class="variable">amp</span>;&<span class="variable">amp</span>; <span class="variable">eachElementIsNotObject</span>(<span class="variable">value</span>) ) ) {
                             <span class="keyword">var</span> <span class="variable">parent</span> = (!<span class="variable">father</span>)? <span class="variable">property</span> : <span class="variable">father</span> + &<span class="variable">quot</span>;\\.&<span class="variable">quot</span>; + <span class="variable">property</span>;
                             <span class="keyword">if</span>($.<span class="variable">isArray</span>(<span class="variable">value</span>)) {
                                 <span class="keyword">for</span>(<span class="keyword">var</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">value</span>) {
                                     <span class="keyword">if</span>(<span class="variable">value</span>[<span class="variable">item</span>]) {
-                                        <span class="variable">parent_arr</span> = <span class="variable">parent</span> + &<span class="variable">quot</span>;\\[&<span class="variable">quot</span>;+<span class="variable">item</span>+&<span class="variable">quot</span>;\\]&<span class="variable">quot</span>;;
+                                        <span class="keyword">var</span> <span class="variable">parent_arr</span> = <span class="variable">parent</span> + &<span class="variable">quot</span>;\\[&<span class="variable">quot</span>;+<span class="variable">item</span>+&<span class="variable">quot</span>;\\]&<span class="variable">quot</span>;;
                                         <span class="variable">roam</span>(<span class="variable">value</span>[<span class="variable">item</span>], <span class="variable">parent_arr</span>);
                                     }
                                 }
@@ -273,7 +281,18 @@ form with json using jQuery. Resolve nested objects.
                             <span class="keyword">var</span> <span class="variable">name</span> = (<span class="variable">father</span>)? <span class="variable">father</span> + &<span class="variable">quot</span>;\\.&<span class="variable">quot</span>; + <span class="variable">property</span> : <span class="variable">property</span>;
                             <span class="keyword">var</span> <span class="variable">query</span> = &<span class="variable">quot</span>;[<span class="variable">name</span>=<span class="string">'&quot; + name + &quot;'</span>]&<span class="variable">quot</span>;;
                             <span class="keyword">if</span>(<span class="variable">byId</span>) { <span class="variable">query</span> = (&<span class="variable">quot</span>;#&<span class="variable">quot</span>; + <span class="variable">name</span>); }
-                            <span class="variable">self</span>.<span class="variable">find</span>(<span class="variable">query</span>).<span class="variable">val</span>(<span class="variable">value</span>);
+                            
+							<span class="keyword">var</span> <span class="variable">other</span> = <span class="variable">self</span>.<span class="variable">find</span>(<span class="variable">query</span>);
+                            
+                            <span class="keyword">if</span>(<span class="variable">other</span>.<span class="variable">length</span> === <span class="number integer">0</span>){
+                                <span class="keyword">var</span> <span class="variable">selector</span> = <span class="variable">query</span>.<span class="variable">replace</span>(<span class="regexp">/\\\[(\d+)?\\\]/g</span>, &<span class="variable">quot</span>;\\[\\]&<span class="variable">quot</span>;), 
+                                    <span class="variable">numChave</span> = <span class="variable">name</span>.<span class="variable">replace</span>(<span class="regexp">/[^\\\[(\d+)?\\\]]/g</span>, &<span class="variable">quot</span>;&<span class="variable">quot</span>;), 
+                                    <span class="variable">index</span> = <span class="variable">numChave</span>.<span class="variable">replace</span>(<span class="regexp">/[^\d+]/g</span>, &<span class="variable">quot</span>;&<span class="variable">quot</span>;);
+                                
+                                <span class="variable">other</span> = <span class="variable">self</span>.<span class="variable">find</span>(<span class="variable">selector</span>).<span class="variable">eq</span>(<span class="variable">index</span>);
+                            }
+                            
+                            <span class="variable">other</span>.<span class="variable">val</span>(<span class="variable">value</span>);
                         }
                     }
                 }
@@ -336,7 +355,14 @@ form with json using jQuery. Resolve nested objects.
             <span class="keyword">for</span>(<span class="keyword">var</span> <span class="variable">property</span> <span class="keyword">in</span> <span class="variable">source</span>) {
                 <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="variable">source</span>[<span class="variable">property</span>] === <span class="string">'object'</span> &<span class="variable">amp</span>;&<span class="variable">amp</span>;
                 <span class="keyword">typeof</span> <span class="variable">merged</span>[<span class="variable">property</span>] !== &<span class="variable">quot</span>;<span class="variable">undefined</span>&<span class="variable">quot</span>;) {
-                    <span class="variable">merge</span>(<span class="variable">merged</span>[<span class="variable">property</span>], <span class="variable">source</span>[<span class="variable">property</span>]);
+					
+                    <span class="keyword">if</span>($.<span class="variable">isArray</span>(<span class="variable">merged</span>[<span class="variable">property</span>]) &<span class="variable">amp</span>;&<span class="variable">amp</span>; 
+                       $.<span class="variable">isArray</span>(<span class="variable">source</span>[<span class="variable">property</span>]) &<span class="variable">amp</span>;&<span class="variable">amp</span>; 
+                       !<span class="class">Object</span>.<span class="class">Equals</span>(<span class="variable">merged</span>[<span class="variable">property</span>], <span class="variable">source</span>[<span class="variable">property</span>].<span class="variable">clean</span>())) {
+                        <span class="variable">merged</span>[<span class="variable">property</span>].<span class="variable">push</span>(<span class="variable">source</span>[<span class="variable">property</span>][<span class="number integer">0</span>]);
+                    } <span class="keyword">else</span> {
+                        <span class="variable">merge</span>(<span class="variable">merged</span>[<span class="variable">property</span>], <span class="variable">source</span>[<span class="variable">property</span>]);
+                    }
                 } <span class="keyword">else</span> {
                     <span class="variable">merged</span>[<span class="variable">property</span>] = <span class="variable">source</span>[<span class="variable">property</span>];
                 }
@@ -344,7 +370,29 @@ form with json using jQuery. Resolve nested objects.
             <span class="keyword">return</span> <span class="variable">merged</span>;
         })
     });
-
+	
+	<span class="class">Object</span>.<span class="class">Equals</span> = <span class="class">Object</span>.<span class="class">Equals</span> ||</code></pre>
+</td>
+</tr>
+<tr class="code">
+<td class="docs">
+<p>bool</p>
+</td>
+<td class="code">
+<pre><code><span class="keyword">function</span>(<span class="variable">obj1</span>, <span class="variable">obj2</span>){
+        <span class="keyword">return</span> <span class="class">JSON</span>.<span class="variable">stringify</span>(<span class="variable">obj1</span>) === <span class="class">JSON</span>.<span class="variable">stringify</span>(<span class="variable">obj2</span>);
+    };
+	
+    <span class="class">Array</span>.<span class="variable">prototype</span>.<span class="variable">clean</span> = <span class="keyword">function</span>() {
+	  
+	  <span class="keyword">for</span> (<span class="keyword">var</span> <span class="variable">i</span> = <span class="number integer">0</span>; <span class="variable">i</span> &<span class="variable">lt</span>; <span class="this">this</span>.<span class="variable">length</span>; <span class="variable">i</span>++) {
+		<span class="keyword">if</span> (<span class="this">this</span>[<span class="variable">i</span>] === <span class="keyword">null</span> || <span class="this">this</span>[<span class="variable">i</span>] === <span class="variable">undefined</span>) {         
+		  <span class="this">this</span>.<span class="variable">splice</span>(<span class="variable">i</span>, <span class="number integer">1</span>);
+		  <span class="variable">i</span>--;
+		}
+	  }
+	  <span class="keyword">return</span> <span class="this">this</span>;
+	};
 })(<span class="variable">jQuery</span>);</code></pre>
 </td>
 </tr>	</body>
