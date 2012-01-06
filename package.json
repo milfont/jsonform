@@ -2,6 +2,10 @@
    , "version" : "1.2.4"
    , "description" : "Create standard JSON From/To Forms with jQuery"
    , "main" : "runspecs.js"
+   , "scripts" : 
+   {
+        "test": "node runspecs.js"
+   }
    , "dependencies" :
     {
         "dox"          : "0.0.5",
