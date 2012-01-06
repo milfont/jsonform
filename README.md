@@ -1,5 +1,5 @@
 ## Build
-(https://secure.travis-ci.org/milfont/jsonform.png)
+[![Build Status](https://secure.travis-ci.org/milfont/jsonform.png)](http://travis-ci.org/milfont/jsonform)
 
 ## Example: by ID
 ```javascript
