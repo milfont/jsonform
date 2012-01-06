@@ -1,3 +1,6 @@
+## Build
+(https://secure.travis-ci.org/milfont/jsonform.png)
+
 ## Example: by ID
 ```javascript
 var byID = true;
