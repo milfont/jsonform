@@ -43,6 +43,21 @@ var lancamento = {
 $("[name='form_name'").populate(lancamento);
 ```
 
+## Testing in console
+```javascript
+var script = document.createElement('script');
+script.onload = function() {
+   var jsonFormScript = document.createElement("script");
+   //source version
+   jsonFormScript.src = "https://raw.github.com/milfont/jsonform/master/lib/jsonform.js";
+   //minified version
+   //jsonFormScript.src = "https://raw.github.com/milfont/jsonform/master/minified/jsonform.min.js";
+  document.body.appendChild(jsonFormScript);
+};
+script.src = "https://raw.github.com/milfont/jsonform/master/vendor/jquery-1.7.1.min.js";
+document.getElementsByTagName('head')[0].appendChild(script);
+```
+
 ## Running Tests:
 ```shell
 Install nodejs and npm https://github.com/joyent/node/wiki/Installation
