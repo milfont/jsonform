@@ -43,7 +43,7 @@ var lancamento = {
 $("[name='form_name'").populate(lancamento);
 ```
 
-## Testing in console
+## Testing in Browser's Console
 ```javascript
 var script = document.createElement('script');
 script.onload = function() {
