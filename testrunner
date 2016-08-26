@@ -5,7 +5,7 @@
 #node-jscoverage lib lib-cov
 #TODO
 
-dox --title JSONForm lib/jsonform.js > docs/index.html
+#dox --title JSONForm lib/jsonform.js > docs/index.html
 
 #https://github.com/dsimard/ready.js
 readyjs ready.conf.js
